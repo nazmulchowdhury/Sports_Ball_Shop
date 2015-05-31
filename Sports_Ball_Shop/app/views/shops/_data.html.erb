@@ -1,0 +1,47 @@
+<% if (!@shops.empty?) %>
+
+	<% amount = 0 %>
+
+	<% content_for(:note) do %>
+		<p style="text-align: center; font-size: 30px; color: #4775FF"><i>Admin Home Page of <b>#Sports Ball Shop#</b></i></p>
+	<% end %>
+
+	<span style="text-align: right">
+		<%= form_tag "/shops/find" do %>
+		<%= text_field_tag :search_string %>
+		<%= submit_tag "Search" %>
+		<% end %><br>
+	</span>
+
+	<table>
+		<thead>
+			<tr>
+				<th>Product Type</th>
+				<th>Product Brand</th>
+				<th>Price</th>
+				<th>Quantity</th>
+				<th>Sold</th>
+				<th>Options</th>
+			</tr>
+		</thead>
+		<tbody>
+			<% @shops.each do |shop| %>
+				<% amount += shop.Price*shop.Sold %>
+				<tr>
+					<td><%= shop.Type %></td>
+					<td><%= shop.Brand %></td>
+					<td><%= shop.Price %></td>
+					<td><%= shop.Quantity %></td>
+					<td><%= shop.Sold %></td>
+					<td><%= link_to 'Update', edit_shop_path(shop) %> <%= link_to 'Delete', shop, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+				</tr>
+			<% end %>
+		</tbody>
+	</table><br>
+	<span style="float: left"><%= link_to 'Insert a new Product', new_shop_path %> | <%= link_to 'Logout', '/admin' %></span>
+	<span style="float: right"><b><u><i>Total amount sold = $<%= amount%></i></u></b></span>
+
+<% else %>
+	<h2>Sorry Product is empty</h2>
+	<p><%= link_to 'Insert a new Product', new_shop_path %> | <%= link_to 'Logout', '/admin' %></p>
+<% end %>

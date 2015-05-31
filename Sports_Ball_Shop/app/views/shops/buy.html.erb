@@ -1,0 +1,10 @@
+<% content_for(:note) do %>
+	<h2><i>Order for <%= @shop.Type %></i></h2>
+<% end %>
+
+<%= form_tag "/shops/user" do %>
+	<p>How much do you want? <%= number_field_tag :Sold %></p>
+	<p><%= submit_tag "OK" %></p>
+<% end %>
+
+<%= link_to 'Home', shops_path %>

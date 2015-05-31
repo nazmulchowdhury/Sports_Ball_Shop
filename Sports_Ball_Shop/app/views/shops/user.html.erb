@@ -1,0 +1,7 @@
+<% if @flag === true %>
+	<h2><i>Congratulation your order will be processed soon!</i></h2>
+	<%= link_to 'Home', shops_path %>
+<% else %>
+	<h2><i>Sorry your value is out of range</i></h2>
+	<%= link_to('Try again!', buy_shop_with_parameter_path($t.id)) %>
+<% end %>

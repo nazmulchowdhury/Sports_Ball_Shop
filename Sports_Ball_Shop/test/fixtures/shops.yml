@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  Type: MyString
+  Brand: MyString
+  Price: 1
+  Quantity: 1
+  Sold: 1
+
+two:
+  Type: MyString
+  Brand: MyString
+  Price: 1
+  Quantity: 1
+  Sold: 1

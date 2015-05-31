@@ -1,0 +1,41 @@
+<% content_for(:note) do %>
+	<h2><i>Search results for <%= params[:search] %></i></h2>
+<% end %>
+
+<% if (!@shops.empty?) %>
+
+	<span style="text-align: right">
+		<%= form_tag "/shops/user_find" do %>
+			<%= text_field_tag :search%>
+			<%= submit_tag "Search" %>
+		<% end %><br>
+	</span>
+
+	<table>
+		<thead>
+			<tr>
+				<th>Product Type</th>
+				<th>Product Brand</th>
+				<th>Price</th>
+				<th>Quantity</th>
+				<th>Option</th>
+			</tr>
+		</thead>
+		<tbody>
+			<% @shops.each do |shop| %>
+				<tr>
+					<td><%= shop.Type %></td>
+					<td><%= shop.Brand %></td>
+					<td><%= shop.Price %></td>
+					<td><%= shop.Quantity %></td>
+					<td><%= link_to('Order Now!', buy_shop_with_parameter_path(shop.id)) %></td>
+				</tr>
+			<% end %>
+		</tbody>
+	</table>
+	<br>
+<% else %>
+	<p> Sorry product is not exist for <%= params[:search] %> </p><br>
+<% end %>
+
+<p><%= link_to 'Home', shops_path %></p>

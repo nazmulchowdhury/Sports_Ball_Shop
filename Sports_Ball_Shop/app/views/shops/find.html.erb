@@ -1,0 +1,10 @@
+<% content_for(:note) do %>
+	<h2><i>Search results for <%= params[:search_string] %></i></h2>
+<% end %>
+
+<% if (!@shops.empty?) %>
+	<%= render 'data' %><br>
+<% else %>
+	<p> Sorry product is not exist for <%= params[:search_string] %> </p><br>
+<% end %>
+<p><%= link_to 'Back', '/show_index' %></p>

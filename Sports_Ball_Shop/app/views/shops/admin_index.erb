@@ -1,0 +1,6 @@
+<% if (@admin.empty?) %>
+	<h2><i>Wrong username or password</i></h2>
+	<%= link_to 'Login Again!', '/admin' %>
+<% else %>
+	<%= render 'data' %>
+<% end %>
